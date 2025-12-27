@@ -2,6 +2,7 @@
 //1.Demarrer la session pour enregistrer l'utilisateur
 session_start();
 
+declare(strict_types=1);
 //inclure la connexion a la BDD
 require_once 'db_connexion.php';
 

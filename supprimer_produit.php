@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+require_once "db_connexion.php";
 ?>
 
 <!DOCTYPE html>
@@ -13,18 +14,6 @@ declare(strict_types=1);
 <body>
     
 <?php
-$host="localhost";
-$dbname="base_test";
-$user="root";
-$password="";
-try {
-    // Instance de la classe PDO + hote + nom de la BDD + encodage des caractères EUROPE + user PhpMyAdmin + MDP PhpMyAdmin
-    $bdd_connexion=new PDO ("mysql:host=$host;dbname=$dbname;charset=utf8",$user,$password);
-    echo "Connexion à la base de donnéees base_test : SUCCES!"; 
-} catch (PDOException $e) {
-    //Erreur de connexion à PDO MySQL
-    echo "Erreur de connexion à PDO MySQL!" .$e->getMessage();
-}
 
 $sql="DELETE FROM produits WHERE id_produit=?";
 //Créer une requête préparée pour éviter les injections SQl

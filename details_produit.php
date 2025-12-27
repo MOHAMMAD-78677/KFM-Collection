@@ -1,7 +1,16 @@
 <?php
 declare(strict_types=1);
+require_once "db_connexion.php";
 ?>
-<link rel="stylesheet" href="Assets/CSS/bootstrap.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Assets/CSS/bootstrap.css">
+    <title>1er doc php</title>
+</head>
+<body>
 
 <?php
 $host="localhost";

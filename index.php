@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+require_once "db_connexion.php";
 ?>
 
 <!DOCTYPE html>

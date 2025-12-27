@@ -1,6 +1,5 @@
 <?php
-//inclure la connexion a la BDD
-require_once 'db_connexion.php';
+declare(strict_types=1);
 ?>
 
 <?php
