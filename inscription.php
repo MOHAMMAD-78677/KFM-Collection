@@ -1,7 +1,10 @@
 <?php
 declare(strict_types=1);
 //inclure la connexion a la BDD
-require_once 'db_connexion.php';
+require_once "models/Database.php";
+
+$database= new \models\Database();
+$pdo= $database->getPDOconnection();
 
 //déclaration de variables pour les messages
 $error="";

@@ -1,0 +1,22 @@
+.card-img-top {
+    height: 220px;
+    width: 100%;
+    object-fit: contain;
+    background-color: rgb(223, 235, 235);
+}
+
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* prend tout l’espace disponible */
+}
+
+.mt-auto {
+    margin-top: auto; /* pousse le bouton en bas */
+}
+
+.id-color {
+    color:rgb(163, 197, 197);
+    font-weight: 700;
+}

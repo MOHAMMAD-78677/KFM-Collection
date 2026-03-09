@@ -1,0 +1,12 @@
+RewriteEngine on #Activé le moteur de réecriture des URLs
+
+#variable apache qui contient le chemin du fichier demandé
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#signifie si ce n'est pas un fichier
+#^(.*)$ est une expression régulière (REGEX) qui capture tout le chemin demandé et le stocke dans la variable $1
+#index.php?url=$1 signifie que la requête sera redirigée vers index
+#QSA (Query String Append) signifie que les paramètres de la requête originale seront ajoutés à la nouvelle URL
+#L signifie que c'est la dernière règle à appliquer, donc si cette règle est appliquée, aucune autre règle ne sera traitée après
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
