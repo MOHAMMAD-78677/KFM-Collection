@@ -44,20 +44,19 @@ foreach($tous_les_produits as $row):
         <div class="card-body d-flex flex-column">
             <?php
             $nomProduit = $row["nom_produit"];
-            $shortNom = strlen($nomProduit) > 70
-                ? substr($nomProduit, 0, 70) . "..."
+            $shortNom = mb_strlen($nomProduit, 'UTF-8') > 70
+                ? mb_substr($nomProduit, 0, 70, 'UTF-8') . "..."
                 : $nomProduit;
             ?>
             <h5 class="card-title product-title"><?= htmlspecialchars($shortNom) ?></h5>
             <?php
             $description = $row["description_produit"];
-            $shortDescription = strlen($description) > 100
-                ? substr($description, 0, 100) . "..."
-                : $description;
+            $shortDescription = mb_strlen($description, 'UTF-8') > 100
+            ? mb_substr($description, 0, 100, 'UTF-8') . "..."
+            : $description;
             ?>
             <p class="card-text">
-                <?=  htmlspecialchars($shortDescription) ?>
-            </p>
+<?= htmlspecialchars(html_entity_decode($shortDescription, ENT_QUOTES | ENT_HTML5, 'UTF-8'), ENT_QUOTES, 'UTF-8') ?>            </p>
             <p> Prix : <?= $row["prix_produit"] ?> € </p>
             <div class="mt-auto">
             <a href="?url=details_produit&id_produit=<?= $row["id_produit"] ?>" class="btn btn-primary w-100 ">plus d'information</a>
@@ -70,9 +69,12 @@ foreach($tous_les_produits as $row):
 
 </div>
 </div>
+<?php if (isset($_SESSION['user_id'])): ?>
 
-<div class="text-bottom">
-            <a href="ajouter_produit" class="btn btn-success mb-3">Ajouter un produit</a>
-        </div>
+    <div class="text-center my-4">
+        <a href="?url=ajouter_produit" class="btn btn-success mb-3">
+            Ajouter un produit
+        </a>
+    </div>
 
-
+<?php endif; ?>

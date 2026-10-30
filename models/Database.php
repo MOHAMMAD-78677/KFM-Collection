@@ -24,22 +24,15 @@ private PDO|bool $connexion=false;
 //pour permettre l'interaction avec les objets créés à partir de cette classe    
 public function getPDOconnection(){
     try{
-        //instance de la classe PDO dans une variable de classe pour la réutiliser dans les autres méthodes
-        // La pseudo-variable $this est dispo lorsqu'une méthode est appelée depuis un contexte objet
-        //$this est la valeur de l'objet courant, elle permet d'accéder aux propriétés et méthodes de cet objet
-        $this->connexion=new PDO ("mysql:host=" .$this->db_host. ";dbname=" .$this->db_name. ";charset=utf8",$this->db_user, $this->db_password);
-        //on utiliser l'opérateur :: pour acceder au constante de la classe PDO et - ou des méthodes statiques de la classe PDO
-        //ces constantes servent au debug de vos requête HTTP
-        $this->connexion->SetAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        // // Removed the echo statement that was causing issues
-        // echo '<div class="container mt-3 w-50 alert alert-success p-3">Connexion à la base de données réussie!</div>';
-        //en cas de succès, la méthode retounr le booleen TRUE
+        $this->connexion = new PDO("mysql:host=" . $this->db_host . ";dbname=" . $this->db_name . ";charset=utf8mb4", $this->db_user, $this->db_password);
+        $this->connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->connexion->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         return $this->connexion;
-        }catch (\PDOException $e){
-            //en cas d'erreur, la méthode retourne le message d'erreur de PDO
-            Echo "Erreur de connexion à la base de donnée via PDO!" . $e->getMessage();
-            die(); //Alias de exit() pour arrêter l'exécution du script en cas d'erreur critique - avec un code d'état ou un message
-        }
+    } catch (\PDOException $e) {
+        // Écrire le détail dans un log serveur, et renvoyer une erreur non détaillée à l’utilisateur
+        error_log('[Database] ' . $e->getMessage());
+        throw new \RuntimeException('Impossible de se connecter à la base de données. Veuillez réessayer plus tard.');
+    }
 }
 }
 ?>

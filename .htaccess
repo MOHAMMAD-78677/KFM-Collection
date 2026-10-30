@@ -1,4 +1,5 @@
-RewriteEngine on #Activé le moteur de réecriture des URLs
+ #Activé le moteur de réecriture des URL
+ RewriteEngine on
 
 #variable apache qui contient le chemin du fichier demandé
 RewriteCond %{REQUEST_FILENAME} !-f 

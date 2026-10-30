@@ -5,6 +5,9 @@ declare(strict_types=1);
 
 <div class="container">
     <form method="POST" enctype="multipart/form-data">
+<input type="hidden"
+name="csrf_token"
+value="<?= htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES, 'UTF-8') ?>">
 <div class="mt-3">
     <input type="text" name="product_name" value="<?= htmlspecialchars((string)($produit['nom_produit'] ?? '')) ?>" class="form-control">
 </div>
@@ -28,7 +31,7 @@ onclick="return confirm('Voulez-vous vraiment modifier ce produit ?')">
     Editer le produit
 </button>
 <br><br>
-<a href="afficher-produits" class="btn btn-success">Retour</a>
+<a href="?url=afficher-produit" class="btn btn-success">Retour</a>
     </form>
 </div>
 
