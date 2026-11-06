@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 
 
-<div class="container shadow w-50 rounded mt-5 p-3">
+<div class="container shadow w-100 rounded mt-5 p-3">
     <h1 class="text-warning">Ajouter un produit</h1>
     <h2 class="text-success">Remplir le formulaire</h2>
     <form action="?url=ajouter_produit" method="POST" enctype="multipart/form-data">

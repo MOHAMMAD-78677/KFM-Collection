@@ -20,10 +20,10 @@ declare(strict_types=1);
                 $base = defined('BASE_URL') ? rtrim(BASE_URL, '/') : '';
 
                 echo '<img src="' . $base . '/Assets/img/produits/' . $img .
-                     '" class="img-fluid" width="25%" alt="' .
-                     htmlspecialchars((string)($produit["nom_produit"] ?? '')) .
-                     '" title="' .
-                     htmlspecialchars((string)($produit["nom_produit"] ?? '')) . '">';
+                    '" class="img-fluid" width="25%" alt="' .
+                    htmlspecialchars((string)($produit["nom_produit"] ?? '')) .
+                    '" title="' .
+                    htmlspecialchars((string)($produit["nom_produit"] ?? '')) . '">';
                 ?>
             </div>
         </li>
@@ -70,8 +70,8 @@ declare(strict_types=1);
 
             <li class="list-group-item">
                 <a class="btn btn-info"
-                   href="?url=editer_produit&id_produit=<?= (int)$produit["id_produit"] ?>">
-                    Editer le produit
+                href="?url=editer_produit&id_produit=<?= (int)$produit["id_produit"] ?>">
+                Editer le produit
                 </a>
             </li>
 
@@ -95,7 +95,7 @@ declare(strict_types=1);
         <!-- Fin des boutons réservés -->
 
         <li class="list-group-item">
-            <a class="btn btn-success" href="?url=afficher-produit">
+            <a class="btn btn-secondary" href="?url=afficher-produit">
                 Retour
             </a>
         </li>

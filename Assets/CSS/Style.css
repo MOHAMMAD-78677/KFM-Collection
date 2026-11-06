@@ -20,3 +20,7 @@
     color:rgb(163, 197, 197);
     font-weight: 700;
 }
+
+.product-title {
+    overflow-wrap: anywhere;
+}
