@@ -33,11 +33,16 @@ public function AfficherLesDetailsDuProduit(){
 
 //Ajouter image
 public function handleUploadedImage(?array $file): ?string {
-    if (empty($file) || !isset($file['error']) || $file['error'] !== UPLOAD_ERR_OK) {
-        return null;
-    }
-    if (($file['size'] ?? 0) > 2 * 1024 * 1024) {
+    if (empty($file) || ($file['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_NO_FILE) {
     return null;
+    }
+
+    if ($file['error'] !== UPLOAD_ERR_OK) {
+    exit("Erreur pendant l'envoi du fichier.");
+    }
+    
+    if (($file['size'] ?? 0) > 2 * 1024 * 1024) {
+    exit("Image trop grande : 2 Mo maximum.");
 }
 
 $allowed = [
@@ -50,7 +55,7 @@ $allowed = [
 $mime = (new \finfo(FILEINFO_MIME_TYPE))->file($file['tmp_name']);
 
 if (!isset($allowed[$mime])) {
-    return null;
+    exit("Format refusé : JPG, PNG, GIF ou WebP uniquement.");
 }
 
 $ext = $allowed[$mime];
@@ -62,7 +67,7 @@ $dest = $destDir . '/' . $name;
 if (move_uploaded_file($file['tmp_name'], $dest)){
     return $name;
 }
-return null;
+exit("Impossible d'enregistrer l'image.");
 }
 
 //Ajouter un produit

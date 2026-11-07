@@ -88,7 +88,7 @@ if($url=="afficher-produit"){
 }elseif ($url === "ajouter_produit"){
     $title="KFM - Ajouter un produit-";
     //ensuite la fonction du controlleur pour le traitement
-    	$controller->AjouterUnProduit();
+    $controller->AjouterUnProduit();
     //on appel la vue pour charger les champs du formulaire
     require_once "views/produits/ajouter_produit.php";
     //ensuite la fonction du controlleur pour le traitement
